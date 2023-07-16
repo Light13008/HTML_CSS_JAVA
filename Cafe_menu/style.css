@@ -38,3 +38,22 @@ img {
   margin-top:-25px;
   margin-bottom:-25px;
 }
+.price{
+        text-align: right;
+}
+.dessert{
+    text-align: left;
+}
+.flavor{
+   text-align: left;
+}
+
+.bottom-line{
+    color: brown;
+    border-color: brown;
+    border-width: 3px;
+    border-style: solid;
+}
+.item{
+    display: inline;
+}
