@@ -12,7 +12,7 @@
 
 
     </head>
-            <body onload="fetchIssues()">
+            <body onload="fetchIssues()">      <!-- we use fetchIssue to make sure the javascript function fetchIssue() is called each time our application is loaded-->
                 <script  src="main.js"> </script>
                 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">    
@@ -48,15 +48,24 @@
                             <div class="form-group">
                                 <label for="issueDescInput"> Assigned To</label>
                                 <input type="text" class="form-control"
-                                id="issueAssingedToInput" placeholder="Enter responsible..."
+                                id="issueAssingedToInput" placeholder="Enter responsible...">
                             </div>
-
+                            <button type="submit" class="btn btn-primary"></button>
                         </form>
-
                     </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="issueList">    <!-- id "issuelist"  is used to display the output / result  under the div-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <p>&copy CodingTheSmartWay.com</p>
+                    </div>
+
                 </div>
-
-
 
             </body>
 </html>
