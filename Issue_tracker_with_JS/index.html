@@ -38,7 +38,7 @@
                                 id="issueDescInput" placeholder="Description the issue...">
                             </div>
                             <div class="form-group">
-                                <label for="issueDescInput">Severity</label>
+                                <label for="issueServerityInput">Severity</label>
                                 <sekect class="form-control" id="issueServerityInput">
                                     <option value="Low">Low</option>
                                     <option value="Medium">Medium</option>
@@ -50,7 +50,7 @@
                                 <input type="text" class="form-control"
                                 id="issueAssingedToInput" placeholder="Enter responsible...">
                             </div>
-                            <button type="submit" class="btn btn-primary"></button>
+                            <button type="submit" class="btn btn-primary"> submit</button>
                         </form>
                     </div>
                     
@@ -66,6 +66,8 @@
                     </div>
 
                 </div>
+                
+                <a href="#" class="btn btn-warning" onclick="setStatusClosed(\''+id+'\')">Close </a>   <!--we’re attaching the click event to the event handler method setStatusClosed. -->
 
             </body>
 </html>

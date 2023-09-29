@@ -32,20 +32,23 @@ function fetchIssues( )
 
     function saveIssue(e){
         
-        var issueId = chance.guide();
+        var issueId = chance.guide();                                                      // this is set by calling function CHANCE.GUIDE(). 
         var issueDesc = document.getElementById('issueDescInput').value;
         var issueSeverity = document.getElementById('issueAssignedToInput').value;
         var issueAssignedTo = document.getElementById('issueAssignedToInput').value;
-        var issueStatus = 'open';
+        var issueStatus = 'open';                                                          // this is set as OPEN 
 
-        var issue = {
-            id : issueId,
+        var issue = {                                                                     
+            // this object 'issues' is placed int localStorage.
+
+            id : issueId,                                     
             description : issueSeverity,
             severity : issueSeverity ,
             assignedTo : issueAssignedTo,
-            status : issueStatus 
-        }
+            status : issueStatus                              
+        }                                                       
 
+            // after inserting issues object in LocalStorage, we empty the form manually bu using  reset() method.
         if(localStorage.getItem('issues') === null){
 
             var issues = [];
@@ -62,10 +65,33 @@ function fetchIssues( )
 
         document.getElementById('issueInputForm').requestFullscreen();
 
-        fetchIssues();
+        fetchIssues();                      // * we use this method to list the re-generated output 
+                                            //    and to make sure new issue item is visible 
 
-        e.preventDefault();
+
+        e.preventDefault();               //execute e.preventDefault() to avoid that the default submission of the form is taking place.
 
     }
+
+    function setStatusClosed (id)           // The id of the current issue item is passed in as a parameter
+                                            // we’re using the splice method to delete the current item from the array issues. 
+    {
+        var issues = JSON.parse(localStorage.getItem('issues'));  // to get the data from localStorage we neet to get issue
+                                                                  // item in JSON format.  thats why we use JSON>parse method
+
+        for( var i=0; i<issues.length ; i++ )
+        {
+            if (issues[i].id == id )
+            {
+                issues[i].status = "closed";
+
+            }
+        }
+
+        localStorage.setItem('issues' , JSON.stringify(issues));       // having removed the current issue item from the array we’re 
+        fetchIssues();                                                 //writing it back to Local Storage and execute function fetchIssues again to update the list output
+    }
+    
+    
 
 }
