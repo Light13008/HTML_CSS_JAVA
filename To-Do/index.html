@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            </head>
+        <body>
+             <div>
+
+                <input type="text" placeholder="enter your task" id="task"> 
+                <br>
+                <input type="text" placeholder="enter Task period" id="time">
+
+                 <!-- <button onclick="addToDo()" id="button">Add Task</button> -->
+            </div>
+
+            <div id="result"></div>
+
+
+
+                    <script>
+                        // function addToDo(){
+                        //     var task = document.getElementById("task").value;
+                        //     var time = document.getElementById("time").value;
+
+                        //     var taskDiv = document.createElement("div");
+                        //     var timeDiv = document.createElement("div");
+                            
+                        //     taskDiv.innerHTML= "Task" + task;
+                        //     timeDiv.innerHTML= "Time" + time;
+                        //     var mark = document.createElement("button");
+                           
+                        //     mark.innerText="mark as done";
+                        //     mark.onclick = function() {
+                        //          taskDiv.style.textDecoration = "line-through";
+                        //          timeDiv.style.textDecoration = "line-through";
+                        //         mark.disabled = true;  // Disable the button after marking as done
+                        //         };
+                                
+                            // var container = document.createElement("div");
+                            // container.appendChild(taskDiv);
+                            // container.appendChild(timeDiv);
+                            // container.appendChild(mark);
+                            // document.getElementById("result").appendChild(container);
+                            
+
+                        
+                        function updateState(State) {
+                            var box = document.getElementById("result");
+                                     var size = State.length;
+                                for (var i = 0; i < size; i++) {
+                                    var id = State[i].id;   // Assuming the first element in the array is id
+                                    var task =State[i].title; // Assuming the second element is task
+                                    var time =State[i].description; // Assuming the third element is time
+
+                                    // Create a new div with an id attribute
+                                    var Sticky = document.createElement("div");
+                                    Sticky.setAttribute("id", id);
+
+                                    // Create and append task and time divs
+                                    var taskDiv = document.createElement("div");
+                                    taskDiv.innerHTML = "Task :  " + task;
+
+                                    var timeDiv = document.createElement("div");
+                                    timeDiv.innerHTML = "Timet : " + time;
+                                    
+                                    // button for mark as done thing
+                                    var Button = document.createElement("button");
+                                    Button.innerHTML = "Mark as done";
+                                    Button.onclick = function() {
+                                         taskDiv.style.textDecoration = "line-through";
+                                         timeDiv.style.textDecoration = "line-through";
+                                         Button.disabled = true;  // Disable the button after marking as done
+                                        };
+                                
+                                    // Append the task and time divs to the Sticky div
+                                    Sticky.appendChild(taskDiv);
+                                    Sticky.appendChild(timeDiv);
+                                    Sticky.appendChild(Button);
+
+                                    box.appendChild(Sticky);
+                                    // document.body.appendChild(box); 
+                                    
+                                } 
+                                return box; 
+                            }
+                        
+                window.setInterval(async function() {
+                            const res = await fetch("https://sum-server.100xdevs.com/todos")
+                        const json = await res.json();
+                        updateDomAccToState(json.todos)
+                            }, 5000)
+
+
+                            //   updateState([{id:1, title: "Do something", description: "Do anything"}]);    
+                            
+</script>
+
+        </body>
+</html>
